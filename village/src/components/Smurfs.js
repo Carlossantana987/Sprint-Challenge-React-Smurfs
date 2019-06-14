@@ -4,11 +4,10 @@ import Smurf from "./Smurf";
 
 class Smurfs extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="Smurfs">
         <h1>Smurf Village</h1>
-        <ul>
+        <div>
           {this.props.smurfs.map(smurf => {
             return (
               <Smurf
@@ -20,7 +19,7 @@ class Smurfs extends Component {
               />
             );
           })}
-        </ul>
+        </div>
       </div>
     );
   }
