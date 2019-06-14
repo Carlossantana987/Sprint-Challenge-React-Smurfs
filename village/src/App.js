@@ -1,9 +1,24 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, NavLink } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
+import styled from "styled-components";
 import SmurfForm from "./components/SmurfForm";
 import Smurfs from "./components/Smurfs";
+
+const AppPage = styled.div`
+  background: dodgerBlue;
+`;
+
+const NavBar = styled.div`
+  margin:10px 0px 0px 
+  display: flex;
+  justify-content: space-around;
+`;
+const PageBody = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 class App extends Component {
   constructor(props) {
@@ -34,26 +49,27 @@ class App extends Component {
   // You'll need to make sure you have the right properties on state and pass them down to props.
   render() {
     return (
-      <div className="App">
-        <nav className="nav-link">
+      <AppPage>
+        <NavBar>
           <NavLink exact to="/" className="link">
             Smurf
           </NavLink>
           <NavLink to="/smurfForm" className="link">
             Smurfs Form
           </NavLink>
-        </nav>
-
-        <Route
-          path="/smurfForm"
-          render={() => <SmurfForm smurfAddRequest={this.smurfAddRequest} />}
-        />
-        <Route
-          exact
-          path="/"
-          render={() => <Smurfs smurfs={this.state.smurfs} />}
-        />
-      </div>
+        </NavBar>
+        <PageBody>
+          <Route
+            path="/smurfForm"
+            render={() => <SmurfForm smurfAddRequest={this.smurfAddRequest} />}
+          />
+          <Route
+            exact
+            path="/"
+            render={() => <Smurfs smurfs={this.state.smurfs} />}
+          />
+        </PageBody>
+      </AppPage>
     );
   }
 }
